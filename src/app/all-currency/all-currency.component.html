@@ -1,0 +1,23 @@
+<div class="container-fluid bg-light py-3">
+    <div class="row text-center">
+        <h3>All Currencies</h3>
+    </div>
+</div>
+<div *ngIf="isLoading" class="d-flex justify-content-center my-5">
+    <div class="spinner-grow" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+<div class="container">
+    <p>{{allcurrency.status}}</p>
+    <p>{{allcurrency.message}}</p>
+</div>
+
+<table class="table">
+    <tr>
+        <th>CurrencyId</th><th>CountryId</th><th>CurrencyCode</th>
+    <tr *ngFor="let currency of allcurrency.data">
+        <td>{{currency.currencyid}}</td><td>{{currency.countryid}}</td><td>{{currency.currency_code}}</td>
+    </tr>
+</table>

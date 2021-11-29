@@ -1,0 +1,12 @@
+.list-group-item {
+    background-color: transparent !important;
+    color: #000000;
+}
+
+.footer p {
+    color: #3942c0;  
+}
+
+.navbar .active {
+    border-bottom: 3px solid #b29731;
+}

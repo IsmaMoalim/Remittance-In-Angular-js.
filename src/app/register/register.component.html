@@ -1,0 +1,82 @@
+<section class="h-100 my-4" style="background-color: #b1ccff;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        
+<div class="container">
+   
+        <form [formGroup]="singupForm" class="login-container" (ngSubmit)="singup()">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="inputEmail4">Customer Name</label>
+                    <input type="text" class="form-control" name="name" id="inputEmail4" placeholder="name" formControlName="customername">
+                    <span class="text-danger" *ngIf="isSubmitted && singupForm.get('customername')?.hasError('required')">Please Enter CustomerName</span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="inputEmail4">Phone</label>
+                    <input type="number" class="form-control" name="phone" id="inputEmail4" placeholder="phone" formControlName="phone">
+                    <span class="text-danger" *ngIf="isSubmitted && singupForm.get('phone')?.hasError('required')">Please Enter Phone Numer</span>
+                </div>
+            </div>
+        </div>
+
+         <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="inputEmail4">Country</label>
+                    <select #mycountry class="form-control" name="countryid" (change)='oncountrySelected(mycountry.value)' formControlName="country" >
+                        <option selected>Choose..</option>
+                        <!-- <option selected>Choose..</option> -->
+                        <option *ngFor="let country of allCountry.data" value="{{country.countryid}}">{{country.countryname}}</option>
+                      </select>
+                      <span class="text-danger" *ngIf="isSubmitted && singupForm.get('country')?.hasError('required')">Please Select Country </span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="inputEmail4">State</label>
+                    <select #mystate class="form-control"  (change)='oncountrystate(mystate.value)'  formControlName="state">
+                        <option selected>Choose..</option>
+                        <option *ngFor="let state of allState.data" value= {{state.stateid}}>{{state.statename}}</option>
+                      </select>
+                      <span class="text-danger" *ngIf="isSubmitted && singupForm.get('state')?.hasError('required')">Please Select State</span>
+                </div>
+            </div>
+        </div>
+
+
+         <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="inputEmail4">City</label>
+                    <select #mycity id="city" class="form-control" name="city" formControlName="city">
+                        <option selected>Choose..</option>
+                        <option *ngFor="let city of allCity.data" value={{city.cityid}}>{{city.cityname}}</option>
+                      </select>
+                      <span class="text-danger" *ngIf="isSubmitted && singupForm.get('city')?.hasError('required')">Please Select City </span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="inputEmail4"></label>
+                </div>
+            </div>
+        </div>
+           
+         <button type="submit" class="btn btn-primary">Sign in</button>
+  </form>
+
+ 
+</div>
+</div>
+</div>
+</section>
+
+
+
+<!-- hhhhhhhhhhhhhhh -->
+
+
+

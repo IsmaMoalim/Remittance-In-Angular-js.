@@ -1,0 +1,8 @@
+.modal-dialog {
+    max-width: 850px;
+    margin: 4rem auto;
+}
+
+.btn {
+    align-items: center;
+}

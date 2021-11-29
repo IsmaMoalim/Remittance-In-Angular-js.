@@ -1,0 +1,81 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-body">
+            <div class="tabs mt-3">
+<div class="container my-">
+    <form [formGroup]="sendForm" (ngSubmit)="sendmoney()">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Sender Customer</label>
+                <select name="send" id="send" class="form-control" #mysender (change)="getreciever(mysender.value)" formControlName="send">
+                    <option value="">select customer</option>
+                    <option *ngFor="let customer of Sender.data" value="{{customer.customerid}}">{{customer.customername}}</option>
+                </select>
+                <span class="text-danger" *ngIf="isSubmitted && sendForm.get('send')?.hasError('required')">Please select SenderName</span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Reciever Customer</label>
+                <select name="rec" id="rec" class="form-control" #myreciever (change)="getinfo(myreciever.value)" formControlName="recieve">
+                    <option value="">Reciever customer</option>
+                    <option *ngFor="let customer of Reciever.data" value="{{customer.customerid}}">{{customer.customername}}</option>
+                </select>
+                <span class="text-danger" *ngIf="isSubmitted && sendForm.get('recieve')?.hasError('required')">Please select RecieverName</span>
+            </div>
+        </div>
+        
+    </div><br>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Amount in USD</label>
+               <input type="number" class="form-control" placeholder="Amount in USD" (keyup)="onKey($event)" formControlName="amount">
+               <span class="text-danger" *ngIf="isSubmitted && sendForm.get('amount')?.hasError('required')">Enter the Amount In USD</span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label>Converted Amount</label>
+            <div class="input-group mb-3">
+                <input type="text" name="convertamount" id="convertamount" min="10" max="100" class="form-control"  formControlName="convertamount" >
+                <span class="input-group-text" id="c_code">USD</span>
+                <span class="input-group-text text-primary" id="charge" formControlName="charges">0.0</span>
+              </div>
+              
+        </div>
+        
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Payment Type</label>
+                <select name="payment" id="pay" class="form-control" formControlName="payment">
+                    <option value="">Payment Type</option>
+                    <option *ngFor="let payment of payment.data" value="{{payment.paymentid}}">{{payment.paymenttype}}</option>
+                </select>
+                <span class="text-danger" *ngIf="isSubmitted && sendForm.get('payment')?.hasError('required')">Please select PaymentType</span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Payment Status</label>
+                <select name="pay" id="pay" class="form-control" formControlName="status"> 
+                    <option value="">Payment Status</option>
+                    <option *ngFor="let state of status.data" value="{{state.statusid}}">{{state.statusname}}</option>
+                </select>
+                <span class="text-danger" *ngIf="isSubmitted && sendForm.get('status')?.hasError('required')">Please select Status</span>
+            </div>
+        </div>
+        
+    </div><br>
+    <div class="text-center">
+        <button class="btn btn-primary" type="submit">Send Money</button>
+    </div>
+   
+    </form>
+    </div></div></div></div>
+    
+</div>
+
+

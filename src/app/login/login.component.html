@@ -1,0 +1,31 @@
+<section class="vh-100" style="background-color: #b1ccff;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="login">
+        <h2 class="login-header">Log in</h2>
+        <form [formGroup]="loginForm" class="login-container" (ngSubmit)="loginn()">
+      
+          <p [ngClass]="{ 'has-error': isSubmitted && FormControl.email.errors }">
+            <input type="email" placeholder="Email" formControlName="email">
+          </p>
+      
+          <div *ngIf="isSubmitted && FormControl.email.errors" class="help-block">
+            <div *ngIf="FormControl.email.errors.required">Email is required</div>
+          </div>
+      
+          <p [ngClass]="{ 'has-error': isSubmitted && FormControl.password.errors }">
+            <input type="password" placeholder="Password" formControlName="password">
+          </p>
+      
+          <div *ngIf="isSubmitted && FormControl.password.errors" class="help-block">
+            <div *ngIf="FormControl.password.errors.required">Password is required</div>
+          </div>
+      
+          <p>
+            <input type="submit" value="Log in">
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
